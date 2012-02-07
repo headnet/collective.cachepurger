@@ -25,7 +25,6 @@ class PurgeView(BrowserView):
         # 3) Run through Z2 RAM caches in Plone root
         for obj in portal.objectValues('RAM Cache Manager'):
             cache = obj.ZCacheManager_getCache()
-            #import pdb; pdb.set_trace()
             cache.cache = {}
 
         return "All caches has been purged"
