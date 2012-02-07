@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- napped from http://plone.org/products/collective.portlet.explore/issues/14
+       Because Plone 4.1 does not register CMFCore permissions
+  -->
+  <include
+      package="Products.CMFCore" file="permissions.zcml" 
+      xmlns:zcml="http://namespaces.zope.org/zcml"
+      zcml:condition="have plone-41" />
+  
+  <browser:page
+      for="*"
+      name="purge-caches"
+      class=".purger.PurgeView"
+      attribute="purge_caches"
+      permission="cmf.ManagePortal"
+      />
+
+
+</configure>
